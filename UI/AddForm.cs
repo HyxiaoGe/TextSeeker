@@ -10,16 +10,17 @@ using System.Windows.Forms;
 
 namespace TextSeeker
 {
-    public partial class AddInfoControl : UserControl
+    public partial class AddForm : Form
     {
-        public AddInfoControl()
+        public AddForm()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("执行添加操作");
         }
+
     }
 }
