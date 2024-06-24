@@ -28,13 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             keywork = new Label();
             keyword = new TextBox();
             searchBtn = new Button();
             addBtn = new Button();
-            resultArea = new ListBox();
             result = new Label();
+            dataGridView = new DataGridView();
+            videoBindingSource = new BindingSource(components);
+            idDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            authorDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            titleDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            descriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)videoBindingSource).BeginInit();
             SuspendLayout();
             // 
             // keywork
@@ -73,15 +81,6 @@
             addBtn.UseVisualStyleBackColor = true;
             addBtn.Click += btnAdd_Click;
             // 
-            // resultArea
-            // 
-            resultArea.FormattingEnabled = true;
-            resultArea.ItemHeight = 17;
-            resultArea.Location = new Point(46, 174);
-            resultArea.Name = "resultArea";
-            resultArea.Size = new Size(596, 242);
-            resultArea.TabIndex = 4;
-            // 
             // result
             // 
             result.AutoSize = true;
@@ -91,19 +90,67 @@
             result.TabIndex = 5;
             result.Text = "结果区域";
             // 
+            // dataGridView
+            // 
+            dataGridView.AutoGenerateColumns = false;
+            dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, authorDataGridViewTextBoxColumn, titleDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn });
+            dataGridView.DataSource = videoBindingSource;
+            dataGridView.Location = new Point(46, 200);
+            dataGridView.Name = "dataGridView";
+            dataGridView.Size = new Size(596, 238);
+            dataGridView.TabIndex = 6;
+            dataGridView.Visible = false;
+            // 
+            // videoBindingSource
+            // 
+            videoBindingSource.DataSource = typeof(Models.Video);
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            idDataGridViewTextBoxColumn.FillWeight = 53.1530571F;
+            idDataGridViewTextBoxColumn.HeaderText = "Id";
+            idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            // 
+            // authorDataGridViewTextBoxColumn
+            // 
+            authorDataGridViewTextBoxColumn.DataPropertyName = "Author";
+            authorDataGridViewTextBoxColumn.FillWeight = 64.9746246F;
+            authorDataGridViewTextBoxColumn.HeaderText = "Author";
+            authorDataGridViewTextBoxColumn.Name = "authorDataGridViewTextBoxColumn";
+            // 
+            // titleDataGridViewTextBoxColumn
+            // 
+            titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
+            titleDataGridViewTextBoxColumn.FillWeight = 140.936172F;
+            titleDataGridViewTextBoxColumn.HeaderText = "Title";
+            titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            descriptionDataGridViewTextBoxColumn.FillWeight = 140.936172F;
+            descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(dataGridView);
             Controls.Add(result);
-            Controls.Add(resultArea);
             Controls.Add(addBtn);
             Controls.Add(searchBtn);
             Controls.Add(keyword);
             Controls.Add(keywork);
             Name = "MainForm";
             Text = "主面板";
+            Load += MainForm_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)videoBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -115,7 +162,12 @@
         private TextBox keyword;
         private Button searchBtn;
         private Button addBtn;
-        private ListBox resultArea;
         private Label result;
+        private DataGridView dataGridView;
+        private BindingSource videoBindingSource;
+        private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn authorDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
     }
 }
